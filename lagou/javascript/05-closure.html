@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包</title>
+</head>
+<body>
+  
+  <script>
+    // 工资=基本工资+绩效
+    // getSalary(12000, 2000)
+    // get Salary(15000, 3000)
+
+    function makeSalary (base) {
+      return function (performance) {
+        return base + performance
+      }
+    }
+
+    let level1 = makeSalary(12000)
+    let level2 = makeSalary(15000)
+
+    console.log(level1(2000))
+    console.log(level2(3000))
+
+  </script>
+</body>
+</html>
