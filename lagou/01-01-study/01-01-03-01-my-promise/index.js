@@ -32,7 +32,6 @@
       resolve('other')
     })
   }
-  
 
   promise.then(value => {
     console.log(value)
