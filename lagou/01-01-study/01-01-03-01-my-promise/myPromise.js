@@ -39,22 +39,25 @@ class MyPromise {
     this.reason = reason
     // 判断失败回调是否存在 如果存在 调用
     // this.failCallback && this.failCallback(this.reason)
-    while(this.failCallback.length) this.failCallback.shift()(this.value)
+    while(this.failCallback.length) this.failCallback.shift()(this.reason)
   }
 
   // then 方法接收2个参数，成功执行成功回调函数 失败执行失败回调函数
-  then = (successCallback, failCallback) => {
+  then (successCallback, failCallback) {
     let promise2 = new MyPromise((resolve, reject) => {
       // 判断状态
       if (this.status === FULFILLED) {
-        let x = successCallback(this.value)
-        // 判断 x的值  是普通值 还是 promise对象
-        // 如果是普通值  直接调用resolve
-        // 如果是promise 对象，查看promise对象返回的结果
-        // 再根据promise对象返回的结果，决定调用resolve 还是调用reject 
-        
-        resolvePromise(x, resolve, reject)
+        setTimeout(() => {
+          let x = successCallback(this.value)
+          // 判断 x的值  是普通值 还是 promise对象
+          // 如果是普通值  直接调用resolve
+          // 如果是promise 对象，查看promise对象返回的结果
+          // 再根据promise对象返回的结果，决定调用resolve 还是调用reject 
+          
+          resolvePromise(promise2, x, resolve, reject)
+        }, 0)
       } else if (this.status === REJECTED) {
+        console.log(failCallback)
         failCallback(this.reason)
       } else {
         // 等待
@@ -67,7 +70,10 @@ class MyPromise {
   }
 }
 
-function resolvePromise (x, resolve, reject) {
+function resolvePromise (promise2, x, resolve, reject) {
+  if (promise2 === x) {
+    return reject(new TypeError('Chaining cycle detected for promise #<Promise>'))
+  }
   if (x instanceof MyPromise) {
     // promise 对象
     // x.then(value => resolve(value), reason => reject(reason))

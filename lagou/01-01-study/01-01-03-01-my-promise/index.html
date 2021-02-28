@@ -7,6 +7,20 @@
   <title>Document</title>
 </head>
 <body>
-  <script type="module" src="index.js"></script>
+  <!-- <script type="module" src="index.js"></script> -->
+  <script>
+    let promise = new Promise((resolve, reject) => {
+      resolve(100)
+    })
+    let p1 = promise.then(v => {
+      console.log(v)
+      return p1
+    })
+    p1.then(v => {
+      console.log(v)
+    }, reason => {
+      console.log(reason.message)
+    })
+  </script>
 </body>
 </html>

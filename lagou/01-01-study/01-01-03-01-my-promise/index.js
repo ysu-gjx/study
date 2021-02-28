@@ -33,9 +33,10 @@
     })
   }
 
-  promise.then(value => {
+  let p1 = promise.then(value => {
     console.log(value)
-    return other()
-  }).then(v => {
-    console.log(v)
+    return p1
+  })
+  p1.then(console.log, reason => {
+    console.log(reason.message)
   })
