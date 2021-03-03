@@ -6,6 +6,6 @@ function sum (a: number, b: number) {
 
 sum(100, 100)
 
-sum('100', '100')
+// sum('100', '100')
 
-sum('122', 100)
+// sum('122', 100)

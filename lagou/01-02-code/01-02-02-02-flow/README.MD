@@ -26,6 +26,6 @@ yarn babel src -d dist
 
 ### 开发工具插件
 vscode  --> Flow Language Support
-[https://flow.org/en/docs/editors](不同编辑器对应插件)
+[不同编辑器对应插件](https://flow.org/en/docs/editors)
 
-[https://www.saltycrane.com/cheat-sheets/flow-type/latest](查询flow类型)
+[查询flow类型](https://www.saltycrane.com/cheat-sheets/flow-type/latest)
