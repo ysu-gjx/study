@@ -1,0 +1,22 @@
+{
+  "name": "yg-ui",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm -C play dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@yg-ui/components": "workspace:*",
+    "@yg-ui/theme-chalk": "workspace:*",
+    "@yg-ui/utils": "workspace:*"
+  }
+}
